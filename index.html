@@ -1,119 +1,162 @@
+<main>
+  <div class="container">
+    <div class="image-container">
+      <img class="image-before slider-image" src="https://cdn11.bigcommerce.com/s-8007jfzagw/images/stencil/1920w/products/224/276/068\_Torus\_2-01\_MDF\_15mm\_\_21368.1519648733.jpg?c=2" alt="Torus Skirting Board" />
+      <div class="label torus-label">Torus</div>
+      <img class="image-after slider-image" src="https://cdn11.bigcommerce.com/s-8007jfzagw/images/stencil/1280x1280/products/1126/6932/skirting-world-ogee-1-mdf-skirting-board\_\_34368.1697687726.jpg?c=2" alt="Ogee Skirting Board" />
+      <div class="label ogee-label">Ogee</div>
+    </div>
+    <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown" class="slider" />
+    <div class="slider-line" aria-hidden="true"></div>
+    <div class="slider-button" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 256 256">
+        <rect width="256" height="256" fill="none"></rect>
+        <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+        <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+        <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+        <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
+        <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
+      </svg>
+    </div>
+  </div>
 
-    <main>
-      <div class="container">
-        <div class="image-container">
-          <img class="image-before slider-image" src="https://cdn11.bigcommerce.com/s-8007jfzagw/images/stencil/1920w/products/224/276/068_Torus_2-01_MDF_15mm__21368.1519648733.jpg?c=2" alt="Torus Skirting Board" />
-          <img class="image-after slider-image" src="https://cdn11.bigcommerce.com/s-8007jfzagw/images/stencil/1280x1280/products/1126/6932/skirting-world-ogee-1-mdf-skirting-board__34368.1697687726.jpg?c=2" alt="Ogee Skirting Board" />
-        </div>
-        <input type="range" min="0" max="100" value="50" aria-label="Percentage of before photo shown" class="slider" />
-        <div class="slider-line" aria-hidden="true"></div>
-        <div class="slider-button" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 256 256">
-            <rect width="256" height="256" fill="none"></rect>
-            <line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-            <line x1="96" y1="128" x2="16" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-            <polyline points="48 160 16 128 48 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
-            <line x1="160" y1="128" x2="240" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line>
-            <polyline points="208 96 240 128 208 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline>
-          </svg>
-        </div>
-     
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
+    main {
+      display: grid;
+      place-items: center;
+    }
 
-<style>
-  *,
-  *::after,
-  *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    .container {
+      display: grid;
+      place-content: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0rem;
+      --position: 50%;
+    }
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
+    .image-container {
+      max-width: 550px;
+      max-height: 550px;
+      aspect-ratio: 1/1;
+      position: relative;
+    }
 
-  main {
-    display: grid;
-    place-items: center;
-  }
+    .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left;
+    }
 
-  .container {
-    display: grid;
-    place-content: center;
-    position: relative;
-    overflow: hidden;
-    border-radius: 0rem;
-    --position: 50%;
-  }
+    .image-before {
+      position: absolute;
+      inset: 0;
+      width: var(--position);
+    }
 
-  .image-container {
-    max-width: 550px;
-    max-height: 550px;
-    aspect-ratio: 1/1;
-  }
+    .slider {
+      position: absolute;
+      inset: 0;
+      cursor: pointer;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-  .slider-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: left;
-  }
+    .slider:focus-visible ~ .slider-button {
+      outline: 5px solid black;
+      outline-offset: 3px;
+    }
 
-  .image-before {
-    position: absolute;
-    inset: 0;
-    width: var(--position);
-  }
+    .slider-line {
+      position: absolute;
+      inset: 0;
+      width: 0.2rem;
+      height: 100%;
+      background-color: #fff;
+      left: var(--position);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
 
-  .slider {
-    position: absolute;
-    inset: 0;
-    cursor: pointer;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-  }
+    .slider-button {
+      position: absolute;
+      background-color: #fff;
+      color: black;
+      padding: 0.5rem;
+      border-radius: 100vw;
+      display: grid;
+      place-items: center;
+      top: 50%;
+      left: var(--position);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      box-shadow: 1px 1px 1px hsl(0, 50%, 2%, 0.5);
+    }
 
-  .slider:focus-visible ~ .slider-button {
-    outline: 5px solid black;
-    outline-offset: 3px;
-  }
+    .label {
+      position: absolute;
+      top: 10px;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 20px;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
 
-  .slider-line {
-    position: absolute;
-    inset: 0;
-    width: 0.2rem;
-    height: 100%;
-    background-color: #fff;
-    left: var(--position);
-    transform: translateX(-50%);
-    pointer-events: none;
-  }
+    .torus-label {
+      left: 20px;
+    }
 
-  .slider-button {
-    position: absolute;
-    background-color: #fff;
-    color: black;
-    padding: 0.5rem;
-    border-radius: 100vw;
-    display: grid;
-    place-items: center;
-    top: 50%;
-    left: var(--position);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    box-shadow: 1px 1px 1px hsl(0, 50%, 2%, 0.5);
-  }
-</style>
+    .ogee-label {
+      right: 20px;
+    }
 
-<script>
-  window.onload = function() {
-    const container = document.querySelector('.container');
-    document.querySelector('.slider').addEventListener('input', (e) => {
-      container.style.setProperty('--position', `${e.target.value}%`);
-    });
-  }
-</script>
+    .torus-label.show {
+      opacity: 1;
+    }
+
+    .ogee-label.show {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    window.onload = function() {
+      const container = document.querySelector('.container');
+      const slider = document.querySelector('.slider');
+      const torusLabel = document.querySelector('.torus-label');
+      const ogeeLabel = document.querySelector('.ogee-label');
+
+      slider.addEventListener('input', (e) => {
+        container.style.setProperty('--position', `${e.target.value}%`);
+
+        if (e.target.value <= 50) {
+          torusLabel.classList.remove('show');
+          ogeeLabel.classList.add('show');
+        } else {
+          torusLabel.classList.add('show');
+          ogeeLabel.classList.remove('show');
+        }
+      });
+    }
+  </script>
+</main>
